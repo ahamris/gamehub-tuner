@@ -27,6 +27,7 @@ def fake_gamehub(tmp_path: Path, monkeypatch):
     wine_dir = root / "com.gamemac.www" / "wine-engine"
     (gh_dir / "game-settings").mkdir(parents=True)
     (wine_dir / "container").mkdir(parents=True)
+    (wine_dir / "component").mkdir(parents=True)
 
     def make_settings(fname: str, app_id: str, game_id: str, engine_id: str, engine_name: str, stack_kind: str, stack_block: dict, api: str) -> Path:
         data = {
@@ -77,6 +78,13 @@ def fake_gamehub(tmp_path: Path, monkeypatch):
         json.dumps({"wine_installations": {
             "10000073": {"id": "10000073", "name": "wine-proton_11.0", "version_code": 20, "is_default": True, "install_status": "completed"},
         }}),
+        encoding="utf-8",
+    )
+    (wine_dir / "component" / "components.json").write_text(
+        json.dumps({"components": [
+            {"manifest": {"id": "10000085", "name": "gptk-3.0-3", "metadata": {"display_name": "gptk-3.0-3", "component_kind": "graphics"}}, "status": "installed"},
+            {"manifest": {"id": "10000163", "name": "dxmt-v0.80", "metadata": {"display_name": "dxmt-v0.80", "component_kind": "graphics"}}, "status": "installed"},
+        ]}),
         encoding="utf-8",
     )
 

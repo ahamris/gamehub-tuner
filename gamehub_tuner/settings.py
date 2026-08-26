@@ -246,6 +246,7 @@ def patch_settings(
                 f"geen referentie-config voor graphics stack '{graphics_stack}' gevonden "
                 "(configureer de stack eerst ergens in GameHub)."
             )
+        _ensure_component_installed(block, graphics_stack)
         current_kind = s.get("graphics_stack", {}).get("kind")
         if current_kind != graphics_stack:
             changes.append(f"graphics_stack: {current_kind!r} -> {graphics_stack!r}")
@@ -291,6 +292,30 @@ def _ensure_engine_installed(eid: str) -> None:
         raise SettingsError(
             f"engine {eid} is NIET lokaal geïnstalleerd (wine_installations.json toont "
             f"alleen: {', '.join(sorted(installed))}). Installeer de engine eerst in GameHub."
+        )
+
+
+def _ensure_component_installed(block: dict[str, Any], stack: str) -> None:
+    """Weiger als de graphics-stack-component niet geïnstalleerd is (fail-closed).
+
+    Prevents "Failed to start game" in GameHub's preflight (bv. dxmt-v0.80
+    gerefereerd maar nergens geïnstalleerd). Builtin-stacks zonder
+    component_id (bv. opengl) kunnen niet geverifieerd worden en passeren.
+    """
+    cid = str(block.get("component_id", ""))
+    if not cid:
+        return  # builtin, geen component-afhankelijkheid
+    installed = {c["id"] for c in list_installed_components()}
+    if not installed:
+        raise SettingsError(
+            f"kan de installatiestatus van graphics stack '{stack}' niet verifiëren "
+            "(components.json ontbreekt of bevat geen componenten); weiger uit veiligheid."
+        )
+    if cid not in installed:
+        raise SettingsError(
+            f"graphics stack '{stack}' (component {cid}) is NIET lokaal geïnstalleerd; "
+            f"beschikbaar: {', '.join(sorted(installed))}. "
+            "Installeer de stack eerst in GameHub, of gebruik een andere preset."
         )
 
 

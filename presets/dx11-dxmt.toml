@@ -1,5 +1,5 @@
 name = "dx11-dxmt"
-description = "DX11-games via DXMT graphics stack (doorgaans sneller dan GPTK voor DX11 op Apple Silicon)."
+description = "DX11-games via DXMT graphics stack (doorgaans sneller dan GPTK voor DX11 op Apple Silicon). Vereist dat de dxmt-v0.80-component geïnstalleerd is in GameHub; anders weigert de tool."
 
 graphics_stack = "dxmt"
 

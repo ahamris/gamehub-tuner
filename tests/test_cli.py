@@ -47,6 +47,23 @@ def test_main_apply_preset_engine_niet_geinstalleerd(fake_gamehub, capsys):
     assert "Fout:" in out
 
 
+def test_main_apply_dx11_dxmt_zonder_dxmt_component(fake_gamehub, capsys):
+    """Real-world bug: dx11-dxmt preset moet netjes weigeren als dxmt ontbreekt."""
+    import json
+
+    comp_path = fake_gamehub["wine_dir"] / "component" / "components.json"
+    data = json.loads(comp_path.read_text())
+    data["components"] = [c for c in data["components"] if c["manifest"]["id"] != "10000163"]
+    comp_path.write_text(json.dumps(data))
+
+    rc = main(["apply-preset", "517630", "dx11-dxmt", "--yes"])
+    out = capsys.readouterr().out
+    assert rc == 1
+    assert "Fout:" in out
+    assert "dxmt" in out
+    assert "Traceback" not in out
+
+
 def test_main_version(fake_gamehub, capsys):
     with pytest_raises_systemexit(capsys):
         main(["--version"])

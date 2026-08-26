@@ -54,8 +54,12 @@ om een meting vast te leggen.
 ## Per-game kennis (stand 2026-08-26)
 
 ### Just Cause 4 (517630, DX11) — 🟢 playable
-- Draait netjes (laatste log exit 0). Profiel: proton 11 + GPTK, 1080p medium.
-- **Volgende test:** DXMT-variant (`dx11-dxmt`) — DX11 is vaak sneller op DXMT.
+- Draait op GPTK (proton 11). Profiel in de DB: 1080p medium.
+- **Let op:** DXMT-variant getest, maar **dxmt-v0.80 is NIET geïnstalleerd** op
+  dit systeem (alleen gptk-3.0-3) → GameHub preflight faalt ("Failed to start
+  game"). De tool weigert dat nu zelf. Eerst dxmt installeren in GameHub
+  (als het aangeboden wordt), daarna pas de dx11-dxmt-preset gebruiken.
+- Ladder voorlopig: 720p laag + FSR op GPTK meten.
 
 ### ACE COMBAT 7 (502500, DX11) — ⚪ waarschuwing
 - Geconfigureerd op **wine-proton_10.0**, maar die engine is **niet lokaal

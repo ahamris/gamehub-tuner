@@ -99,6 +99,27 @@ def test_onbekende_graphics_stack(fake_gamehub):
         settings.patch_settings(sf, {}, graphics_stack="vulkan", refs=refs)
 
 
+def test_graphics_stack_niet_geinstalleerd_wordt_geweigerd(fake_gamehub):
+    """Real-world bug: dxmt gerefereerd maar component niet geïnstalleerd.
+
+    Dit veroorzaakte "Failed to start game" in GameHub's preflight. Nu fail-closed.
+    """
+    import json
+
+    comp_path = fake_gamehub["wine_dir"] / "component" / "components.json"
+    data = json.loads(comp_path.read_text())
+    data["components"] = [c for c in data["components"] if c["manifest"]["id"] != "10000163"]
+    comp_path.write_text(json.dumps(data))
+
+    files = settings.settings_files()
+    sf = settings.find_file_by_app_id(files, "517630")
+    refs = settings.find_references(files)
+    with pytest.raises(settings.SettingsError, match="NIET lokaal geïnstalleerd"):
+        settings.patch_settings(sf, {}, graphics_stack="dxmt", refs=refs)
+    # bestand onaangeroerd
+    assert not list(sf.path.parent.glob(f"{sf.path.name}.bak-*"))
+
+
 def test_onbekende_settings_key_wordt_geweigerd(fake_gamehub):
     """Review 1.2: typo/onbekende scalar-key mag NIET in de config belanden."""
     files = settings.settings_files()
