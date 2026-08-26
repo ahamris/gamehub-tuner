@@ -52,7 +52,7 @@ def test_patch_settings_in_place_backup_en_filename_behouden(fake_gamehub):
     # filename blijft gelijk
     assert sf.path.name == before_name
     # backup gemaakt
-    backups = list(sf.path.parent.glob(f"{before_name}.bak-*"))
+    backups = list(config.backups_dir().glob(f"{sf.path.stem}.bak-*"))
     assert len(backups) == 1
     # valid JSON + alle oorspronkelijke velden behouden
     data = json.loads(sf.path.read_text(encoding="utf-8"))
@@ -117,7 +117,7 @@ def test_graphics_stack_niet_geinstalleerd_wordt_geweigerd(fake_gamehub):
     with pytest.raises(settings.SettingsError, match="NIET lokaal geïnstalleerd"):
         settings.patch_settings(sf, {}, graphics_stack="dxmt", refs=refs)
     # bestand onaangeroerd
-    assert not list(sf.path.parent.glob(f"{sf.path.name}.bak-*"))
+    assert not list(config.backups_dir().glob(f"{sf.path.stem}.bak-*"))
 
 
 def test_onbekende_settings_key_wordt_geweigerd(fake_gamehub):
@@ -128,7 +128,7 @@ def test_onbekende_settings_key_wordt_geweigerd(fake_gamehub):
     with pytest.raises(settings.SettingsError, match="onbekende settings-keys"):
         settings.patch_settings(sf, scalar_overrides={"sync_mod": "esync"}, refs=refs)
     # bestand moet onaangeroerd zijn (geen backup, geen write)
-    assert not list(sf.path.parent.glob(f"{sf.path.name}.bak-*"))
+    assert not list(config.backups_dir().glob(f"{sf.path.stem}.bak-*"))
 
 
 def test_engine_guard_fail_closed_zonder_installaties_bestand(fake_gamehub, monkeypatch):
@@ -166,7 +166,7 @@ def test_patch_dry_run_schrijft_niet(fake_gamehub):
         sf, scalar_overrides={"sync_mode": "esync"}, refs=refs, dry_run=True
     )
     assert changes
-    assert not list(sf.path.parent.glob(f"{sf.path.name}.bak-*"))
+    assert not list(config.backups_dir().glob(f"{sf.path.stem}.bak-*"))
     assert sf.path.read_text(encoding="utf-8") == before
 
 

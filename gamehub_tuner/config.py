@@ -70,6 +70,11 @@ def benchmarks_dir() -> Path:
     return repo_dir() / "benchmarks"
 
 
+def backups_dir() -> Path:
+    """Backups van settings-edits — bewust BUIITEN de app-map die GameHub scant."""
+    return repo_dir() / "backups"
+
+
 def is_gamehub_running() -> bool:
     """Check of het GameHub.app-process draait (waarschuwing bij apply-preset)."""
     try:

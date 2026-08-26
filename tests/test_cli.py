@@ -36,7 +36,7 @@ def test_main_apply_preset_dry_run_schrijft_niet(fake_gamehub):
     rc = main(["apply-preset", "517630", "dx11-dxmt", "--yes", "--dry-run"])
     assert rc == 0
     assert sf.path.read_text(encoding="utf-8") == before
-    assert not list(sf.path.parent.glob(f"{sf.path.name}.bak-*"))
+    assert not list(config.backups_dir().glob(f"{sf.path.stem}.bak-*"))
 
 
 def test_main_apply_preset_engine_niet_geinstalleerd(fake_gamehub, capsys):

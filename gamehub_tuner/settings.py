@@ -167,7 +167,10 @@ def find_file_by_app_id(files: list[SettingsFile], app_id: str) -> SettingsFile 
 
 
 def backup(path: Path) -> Path:
-    bak = path.with_name(f"{path.name}.bak-{int(time.time() * 1000)}")
+    """Kopieer naar de repo-backup-map (nooit in de app-map die GameHub scant)."""
+    bak_dir = config.backups_dir()
+    bak_dir.mkdir(parents=True, exist_ok=True)
+    bak = bak_dir / f"{path.stem}.bak-{int(time.time() * 1000)}{path.suffix}"
     shutil.copy2(path, bak)
     return bak
 
