@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+database/steam-cache.json
+benchmarks/*.json
+.DS_Store

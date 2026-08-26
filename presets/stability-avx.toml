@@ -1,0 +1,6 @@
+name = "stability-avx"
+description = "AVX-emulatie aan — voor games die crashen met 'illegal instruction' (kost wat CPU-prestatie)."
+
+[settings]
+avx_enabled = true
+bypass_av_decode = true

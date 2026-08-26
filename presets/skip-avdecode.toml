@@ -1,0 +1,5 @@
+name = "skip-avdecode"
+description = "Skip audio/video-decode: vervangt CG/filmpjes door zwart beeld. Lost hangs bij intro's op."
+
+[settings]
+bypass_av_decode = true

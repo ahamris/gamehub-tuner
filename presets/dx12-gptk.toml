@@ -1,0 +1,19 @@
+name = "dx12-gptk"
+description = "DX12-games via GPTK (Apple Game Porting Toolkit) — de standaard voor DX12."
+
+graphics_stack = "gptk"
+engine = "wine-proton_11.0"
+
+[settings]
+sync_mode = "msync"
+avx_enabled = false
+bypass_av_decode = false
+gamepad_compat_mode = false
+retina_mode = false
+metal_hud_enabled = false
+metal4_enabled = false
+dlss_mode = "disabled"
+ray_tracing_mode = "off"
+dxmt_experimental_dx12_support = false
+molten_vk = "builtin-moltenvk-1.4.2"
+open_gl = "builtin-opengl"

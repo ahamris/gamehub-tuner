@@ -1,0 +1,16 @@
+name = "max-fps-720p"
+description = "60 fps-basisprofiel: render 720p met upscaler, gericht op stabiliteit i.p.v. kwaliteit."
+
+[settings]
+sync_mode = "msync"
+avx_enabled = false
+bypass_av_decode = false
+gamepad_compat_mode = false
+retina_mode = false
+metal_hud_enabled = false
+metal4_enabled = false
+dlss_mode = "quality"
+ray_tracing_mode = "off"
+dxmt_experimental_dx12_support = false
+molten_vk = "builtin-moltenvk-1.4.2"
+open_gl = "builtin-opengl"

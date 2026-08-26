@@ -1,0 +1,6 @@
+name = "benchmark-mode"
+description = "Zet Metal HUD aan voor FPS-metingen. Gebruik dit tijdens de ladder; zet uit daarna."
+
+[settings]
+metal_hud_enabled = true
+retina_mode = false

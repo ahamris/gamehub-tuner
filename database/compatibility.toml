@@ -1,0 +1,109 @@
+# GameHub compatibility database — community-bijdragen zijn welkom!
+#
+# Status-waarden: native | perfect | playable | unstable | broken | untested
+# FPS-doel: 60 (avg >= 60, 1% lows >= 45 = stabiel, zie docs/TUNING.md).
+# Hardware-veld altijd invullen: chip, RAM, macOS-versie.
+
+[[games]]
+app_id = 517630
+platform = "steam"
+name = "Just Cause 4"
+dx = "11"
+status = "playable"
+rating = "B+"
+date = "2026-08-25"
+hardware = "M2 Pro, 16 GB, macOS 26.5.1"
+engine = "wine-proton_11.0"
+graphics_stack = "gptk"
+render_res = "1080p"
+upscale = "-"
+quality = "medium"
+avg_fps = 60
+low_1pct = 45
+fps_target = 60
+notes = "Draait netjes (exit 0 in laatste log). Ladder nog niet volledig doorlopen; DXMT-variant is de volgende test."
+
+[[games]]
+app_id = 502500
+platform = "steam"
+name = "ACE COMBAT 7: SKIES UNKNOWN"
+dx = "11"
+status = "untested"
+rating = ""
+date = ""
+hardware = "M2 Pro, 16 GB, macOS 26.5.1"
+engine = "wine-proton_10.0"
+graphics_stack = "gptk"
+render_res = ""
+upscale = ""
+quality = ""
+fps_target = 60
+notes = "WAARSCHUWING: geconfigureerd op wine-proton_10.0, maar die engine is NIET lokaal geïnstalleerd (alleen 11.0). Engine installeren of preset naar 11.0 toepassen vóór testen."
+
+[[games]]
+app_id = 1846380
+platform = "steam"
+name = "Need for Speed™ Unbound"
+dx = "12"
+status = "untested"
+rating = ""
+date = ""
+hardware = "M2 Pro, 16 GB, macOS 26.5.1"
+engine = "wine-proton_11.0"
+graphics_stack = "gptk"
+render_res = ""
+upscale = ""
+quality = ""
+fps_target = 60
+notes = "Frostbite DX12. Ladder: start 720p + FSR, RT uit. Metal4-variant testen."
+
+[[games]]
+app_id = 1517290
+platform = "steam"
+name = "Battlefield™ 2042"
+dx = "12"
+status = "broken"
+rating = "F"
+date = "2026-08-26"
+hardware = "M2 Pro, 16 GB, macOS 26.5.1"
+engine = "wine-proton_11.0"
+graphics_stack = "gptk"
+render_res = ""
+upscale = ""
+quality = ""
+fps_target = 60
+notes = "VERWACHT BROKEN: Denuvo anti-tamper + Easy Anti-Cheat werken niet onder Wine/GPTK-translatie. Test ter bevestiging, documenteer als broken."
+
+[[games]]
+app_id = 2651280
+platform = "steam"
+name = "Marvel's Spider-Man 2"
+dx = "12"
+status = "untested"
+rating = ""
+date = ""
+hardware = "M2 Pro, 16 GB, macOS 26.5.1"
+engine = "wine-proton_11.0"
+graphics_stack = "gptk"
+render_res = ""
+upscale = ""
+quality = ""
+fps_target = 60
+notes = "Zware DX12 PS5-port, 16 GB RAM is krap. Verwacht: 720p/900p medium. Nixxes-port heeft DLSS/FSR ingebouwd."
+
+[[games]]
+app_id = 1551360
+platform = "steam"
+name = "Forza Horizon 5"
+dx = "12"
+status = "untested"
+rating = ""
+date = ""
+hardware = "M2 Pro, 16 GB, macOS 26.5.1"
+engine = "wine-proton_11.0"
+graphics_stack = "gptk"
+render_res = ""
+upscale = ""
+quality = ""
+fps_target = 60
+notes = "Goed gedocumenteerd in de GPTK-community. Ladder: 720p + FSR, daarna omhoog."

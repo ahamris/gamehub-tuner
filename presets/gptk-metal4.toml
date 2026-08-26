@@ -1,0 +1,9 @@
+name = "gptk-metal4"
+description = "GPTK met Metal 4 aan — experimenteel: kan DX12-prestatie verbeteren of juist breken. Test eerst."
+
+graphics_stack = "gptk"
+
+[settings]
+metal4_enabled = true
+ray_tracing_mode = "off"
+dlss_mode = "disabled"

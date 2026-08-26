@@ -1,0 +1,14 @@
+name = "proton10-legacy"
+description = "Engine wine-proton_10.0 — oudere engine voor games die op 11.0 regressies hebben."
+
+engine = "wine-proton_10.0"
+
+[settings]
+sync_mode = "msync"
+avx_enabled = false
+bypass_av_decode = false
+metal_hud_enabled = false
+metal4_enabled = false
+dlss_mode = "disabled"
+ray_tracing_mode = "off"
+dxmt_experimental_dx12_support = false

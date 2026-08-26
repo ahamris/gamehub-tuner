@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gamehub-tuner"
+version = "0.1.0"
+description = "Tune GameHub-for-Mac per-game settings, apply 60fps-ladder presets and generate community compatibility reports."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "ahamris" }]
+keywords = ["gamehub", "macos", "wine", "gptk", "gaming", "tuning"]
+classifiers = [
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+]
+
+[project.scripts]
+gamehub-tuner = "gamehub_tuner.cli:main"
+
+[tool.setuptools]
+packages = ["gamehub_tuner"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
